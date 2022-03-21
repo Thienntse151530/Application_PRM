@@ -5,10 +5,11 @@ import com.google.gson.Gson;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public interface Instance {
+public interface InstanceServerLocal {
+    ConfigIpServer configLocal = new ConfigIpServer();
     Gson gson = new Gson();
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://192.168.0.7:8000")
+    Retrofit retrofitLocal = new Retrofit.Builder()
+            .baseUrl(configLocal.ipAddressServerLocal)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build();
 }
